@@ -1,76 +1,38 @@
 from typing import List, Optional
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        higher = 0
-        dummy = result = ListNode()
-        while (l1 != None) & (l2 != None):
-            digit_sum = l1.val + l2.val + higher
-            if digit_sum > 9:
-                higher = 1
-                digit_sum -= 10
-            else:
-                higher = 0
-            print(digit_sum, "ttt")
-            dummy.next = ListNode(digit_sum, None)
-            dummy = dummy.next
-            l1 = l1.next
-            l2 = l2.next
-        while (l1 == None) & (l2 != None):
-            if higher != 0:
-                digit_sum = l2.val + higher
-                if digit_sum > 9:
-                    higher = 1
-                    digit_sum -= 10
-                else:
-                    higher = 0
-                dummy.next = ListNode(digit_sum, None)
-            else:
-                dummy.next = l2
-            # print("l2: ", digit_sum)
+    def trap(self, height: List[int]) -> int:
+        temp = []
+        current = 0
 
-            dummy = dummy.next
-            l2 = l2.next
-        while (l2 == None) & (l1 != None):
-            # print(l1.val, higher)
-            if higher != 0:
-                digit_sum = l1.val + higher
-                if digit_sum > 9:
-                    higher = 1
-                    digit_sum -= 10
-                else:
-                    higher = 0
-                dummy.next = ListNode(digit_sum, None)
-            else:
-                dummy.next = l1
-            # print("l1: ", digit_sum)
-            dummy = dummy.next
-            l1 = l1.next
-        if higher == 1:
-            dummy.next = ListNode(1, None)
-        return result.next
+        for i, h in enumerate(height):
+            if (h >= current) & (h != 0):
+                temp.append([i, h])
+                current = h
+            elif h < current:
+                flag = 0
+                for j in height[i+1:]:
+                    # print('inn: ', i, h, j)
+                    if h <= j:
+                        flag = 1
+                        break
+
+                if flag == 0:
+                    temp.append([i, h])
+        # print(temp)
+        # calculate the areas
+        whole_area = 0
+        for i in range(len(temp)-1):
+            area = min(temp[i][1], temp[i+1][1]) * (temp[i+1][0] - temp[i][0]-1)
+            rock_area = 0
+            # print("range", temp[i][0]+1, temp[i+1][0])
+            for j in range(temp[i][0]+1, temp[i+1][0]):
+                rock_area += height[j]
+            whole_area = whole_area + area - rock_area
+            # print(area, rock_area)
+        return whole_area
 
 
-
-def lst2link(lst):
-    cur = dummy = ListNode(0)
-    for e in lst:
-        cur.next = ListNode(e)
-        cur = cur.next
-    return dummy.next
-
+height = [0,1,0,2,1,0,1,3,2,1,2,1,1]
 test = Solution()
-l1 = lst2link([1,8])
-l2 = lst2link([0])
+print(test.trap(height))
 
-
-
-result = test.addTwoNumbers(l1, l2)
-while result != None:
-    print(result.val)
-    result = result.next
