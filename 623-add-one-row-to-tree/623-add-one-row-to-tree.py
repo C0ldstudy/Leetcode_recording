@@ -11,6 +11,7 @@ class Solution:
             new.left = root
             return new
         layer = [root]
+        # iteratively collect the nodes in the correct layer
         for i in range(depth-2):
             tmp = []
             for n in layer:
@@ -19,6 +20,7 @@ class Solution:
                 if n.right != None:
                     tmp.append(n.right)
             layer = tmp
+        # insert the new nodes
         for n in layer:
             tmp_n = n.left
             n.left = TreeNode(val)
