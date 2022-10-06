@@ -4,6 +4,7 @@ class Solution:
         right = 0
         substring = []
         max_left, max_right = 0, 0
+        # iteratively check each item, use the left and right index to contorl the length of the substring
         for i in s:
             if not i in substring:
                 substring += i
@@ -14,8 +15,7 @@ class Solution:
                 substring += i
                 left += 1
                 right += 1
-                # print(left, right, substring, i)
-                
+                # if the new coming character is still repeated, keep right moving the left index
                 while i in substring[:-1]:
                     left += 1
                     substring = substring[1:]
