@@ -1,5 +1,7 @@
 This repository is used to record the leetcode questions I have finished.
 
+One problem a day, keep the rejection away.
+
 Leetcode: https://leetcode.com/c01dstudy/
 
 Good Chrome Extension: 
