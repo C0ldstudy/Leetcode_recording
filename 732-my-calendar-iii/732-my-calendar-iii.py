@@ -20,20 +20,6 @@ class MyCalendarThree:
                 result = current
         return result
 
-        
-        
-        
-        
-        
-        
-#         if end > len(self.data):
-#             for i in range(len(self.data), end, 1):
-#                 self.data.append(0)
-#         for i in range(start, end):
-#             self.data[i] += 1
-#         return max(self.data)
-        
-        
 
 
 # Your MyCalendarThree object will be instantiated and called as such:
