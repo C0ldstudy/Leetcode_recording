@@ -1,1 +1,2 @@
-​
+One thing need to mention is the priority in the algorithm.
+It prefers to change the front characters instead of the minimum one. There are also some special cases need attentions like all a string, `aba` string.
