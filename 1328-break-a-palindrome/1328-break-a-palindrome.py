@@ -10,7 +10,7 @@ class Solution:
         if len(number) < 2 :
             palindrome = palindrome[:-1] + 'b'
             return palindrome
-
+        
         target = chr(number[0])
         # print(target)
         for i, cha in enumerate(palindrome):
