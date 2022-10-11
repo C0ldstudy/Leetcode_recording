@@ -11,6 +11,6 @@ class Solution:
                 second = number
             elif number > second:
                 return True
-            print(first, second)
+            # print(first, second)
         return False
             
