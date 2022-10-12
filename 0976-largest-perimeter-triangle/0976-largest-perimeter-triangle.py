@@ -4,14 +4,12 @@ class Solution:
             return 0
         else:
             sorted_nums = sorted(nums)
-            sorted_nums.reverse()
-            for i in range(len(sorted_nums)-2):
-                number1 = sorted_nums[i]
-                number2 = sorted_nums[i+1]
-                for j in range(i+2, len(sorted_nums)):
-                    number3 = sorted_nums[j]
-                    if number3+number2>number1:
-                        return number3+number2+number1
+            # print(sorted_nums)
+            for i in range(len(sorted_nums)-1, 1, -1):
+                if sorted_nums[i] < sorted_nums[i-1] + sorted_nums[i-2]:
+                    return sorted_nums[i] + sorted_nums[i-1] + sorted_nums[i-2]
+                
+
             return 0
                 
             
