@@ -1,1 +1,1 @@
-​
+The essence of the problem is to combine the largest two numbers together and iteratively check the smallest number. If it meets the trainage requirements (the sum of two samller sides are larger than the third side), we return the perimeter.
