@@ -1,1 +1,1 @@
-​
+Use `sorted(range(len(nums)),key=nums.__getitem__)` to get the sorted indexes of the list. And then since it assumes to have a solution, I set left and right flags to check them one by one.
