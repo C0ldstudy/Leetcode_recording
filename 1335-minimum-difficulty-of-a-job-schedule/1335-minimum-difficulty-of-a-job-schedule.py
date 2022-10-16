@@ -14,11 +14,7 @@ class Solution:
         for j in range(1, d):
             for i in range(j+1, len(jobDifficulty)):
                 for k in range(i):
-                    # print(k, i)
-                    # print(dp[j-1][k], jobDifficulty[k+1:i+1])
                     dp[j][i] = min(dp[j][i], dp[j-1][k] + max(jobDifficulty[k+1:i+1]))
-                    # dp[j][i] = local_min
-        # print(dp)
         return dp[d-1][len(jobDifficulty)-1]
                 
         
