@@ -4,7 +4,7 @@ class Solution:
         result.append('1')
         for i in range(1, n):
             result.append(self.say(result[i-1]))
-        print(result)
+        # print(result)
         return result[n-1]
    
     def say(self, num):
