@@ -1,1 +1,1 @@
-​
+The main problem of the task is to compres the number sequence with a simple one dimension dynamic programming.
