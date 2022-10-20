@@ -6,9 +6,7 @@ class Solution:
         for i, number in enumerate(number_list):
             if number == None:
                 continue
-            integer = int(num/number)
-            # print(num, result, number)
-            
+            integer = int(num/number)            
             if integer == 0:
                 continue
             elif integer == 4:
