@@ -1,0 +1,1 @@
+one special case is that the repeated one is also not the missing number. The final number is mssing.
