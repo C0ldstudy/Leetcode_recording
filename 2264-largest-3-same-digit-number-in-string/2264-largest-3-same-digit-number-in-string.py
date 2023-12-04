@@ -11,6 +11,7 @@ class Solution:
                     j += 1
                 else:
                     # print(j)
+                    # The substring should be larger than 3 instead of be equal to 3.
                     if j >= 3:
                         result.append(int(num[i]))
                     # result.apend(j)
