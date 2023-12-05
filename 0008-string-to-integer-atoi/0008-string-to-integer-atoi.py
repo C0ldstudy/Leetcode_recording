@@ -5,8 +5,10 @@ class Solution:
                 s = s[i:]
                 break
         print(s)
+        # each time after cliping the string, the length can be 0;
         if len(s) == 0: return 0
         flag = 1
+        # +- appear at the same time, output 0
         if s[0] == '-': 
             flag *= -1
             s = s[1:]
