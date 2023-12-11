@@ -1,8 +1,7 @@
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> int:
         length = int(len(arr)/4)
-        # print(length)
-        i = 0 # do not need to compare with itself
+        i = 0 
         n = arr[i]
         c = 0        
         while i < len(arr):
@@ -13,7 +12,7 @@ class Solution:
                     return n
             else:
                 n = arr[i]
-                c = 1
+                c = 1 # do not need to compare with itself
             if i < len(arr):
                 i += 1
         return n
