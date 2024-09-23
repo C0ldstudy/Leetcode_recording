@@ -2,8 +2,8 @@ class Solution:
     def findKthNumber(self, n: int, k: int) -> int:
         curr = 1
         k -= 1
-        while k > 0:
-            step = self.count_steps(n, curr, curr+1)
+        while  k > 0:
+            step = self.gap(curr, curr+1, n)
             if step <= k:
                 curr += 1
                 k -= step
@@ -11,12 +11,15 @@ class Solution:
                 curr *= 10
                 k -= 1
         return curr
-    
-    def count_steps(self, n, prefix1, prefix2):
-        steps = 0
-        while prefix1 <= n:
-            steps += min(n+1, prefix2) - prefix1
-            prefix1 *= 10
-            prefix2*= 10
-        return steps
+    def gap(self, p1, p2, n):
+        step = 0
+        while p1 < n+1:
+            step += min(n+1, p2) - p1
+            p1 *= 10
+            p2 *= 10
+        return step
+            
+            
+            
+                
         
