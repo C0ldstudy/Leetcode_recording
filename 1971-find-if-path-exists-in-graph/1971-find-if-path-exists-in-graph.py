@@ -1,4 +1,4 @@
-class UnionFind:
+class UF:
     def __init__(self):
         self.data = {}
     def find(self, x):
@@ -11,10 +11,11 @@ class UnionFind:
         
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        node = UnionFind()
+        uf = UF()
         for e in edges:
-            node.union(e[0], e[1])
-        return node.find(source) == node.find(destination)
-        
+            uf.union(e[0], e[1])
+        if uf.find(source) == uf.find(destination): return True
+        return False
+            
         
         
