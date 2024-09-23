@@ -1,32 +1,22 @@
 class Solution:
     def diffWaysToCompute(self, expression: str) -> List[int]:
-        result = []
+        res = []
+        if len(expression) == 0: 
+            return []
+        elif (len(expression) <= 2 and expression.isdigit()):
+            return [int(expression)]
         
-        eq = expression#.split("+").split("-").split("*")
-        if len(eq) == 0: return result
-        if len(eq) == 1:
-            return [int(eq)]
-        if (len(eq) == 2) and (eq[0].isdigit()):
-            return [int(eq)]
+        for i, e in enumerate(expression):
+            if e.isdigit(): continue
+            left_res = self.diffWaysToCompute(expression[:i])
+            right_res = self.diffWaysToCompute(expression[i+1:])
+            for left in left_res:
+                for right in right_res:
+                    if e == "+":
+                        res.append(left+right)
+                    if e == "-":
+                        res.append(left-right)                
+                    if e == "*":
+                        res.append(left*right)
+        return res
         
-        
-        for i, n in enumerate(eq):
-            if n.isdigit(): continue
-            left_result = self.diffWaysToCompute(expression[:i])
-            right_result = self.diffWaysToCompute(expression[i+1:])
-                
-            for left in left_result:
-                for right in right_result:
-                    if n == "+":
-                        result.append(left + right)
-                    elif n == "-":
-                        result.append(left - right)
-                    elif n == "*":
-                        result.append(left * right)
-        
-        return result
-                
-        
-        
-                
-    
