@@ -4,19 +4,20 @@ class Solution:
         for i in s:
             if i in ['(', '[', '{']:
                 stack.append(i)
+            elif len(stack) == 0:
+                return False
+            elif (i == ')') and (stack[-1] == '('):
+                stack.pop(-1)
+            elif (i == ']') and (stack[-1] == '['):
+                stack.pop(-1)
+            elif (i == '}') and (stack[-1] == '{'):
+                stack.pop(-1)            
             else:
-                if stack == []: return False
-                if (stack[-1] == '(') and (i==')'):
-                    stack.pop()
-                elif (stack[-1] == '[') and (i==']'):
-                    stack.pop()
-                elif (stack[-1] == '{') and (i=='}'):
-                    stack.pop()
-                else:
-                    return False
-        if stack == []:
-            return True
-        else:
-            return False
+                return False
+        print(stack)
+        if stack == []: return True
+        return False
+
                 
-        
+                
+                
