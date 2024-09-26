@@ -1,17 +1,17 @@
 class MyQueue:
 
     def __init__(self):
-        
         self.data = []
+        
 
     def push(self, x: int) -> None:
         self.data.append(x)
         
 
     def pop(self) -> int:
-        result = self.data[0]
+        res = self.data[0]
         self.data = self.data[1:]
-        return result
+        return res
         
 
     def peek(self) -> int:
