@@ -2,11 +2,11 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         m, n = len(board), len(board[0])
         if len(word) > m*n: return False
-        # cnt = Counter(word)
-        # length = Counter(chain(*board))
-        # # print(cnt, length)
-        # if not cnt <= length:      # [b] there are not enough
-        #     return False  
+        cnt = Counter(word)
+        length = Counter(chain(*board))
+        # print(cnt, length)
+        if not cnt <= length:      # [b] there are not enough
+            return False  
                 
         def dfs(i,j, s):
             if s == len(word): return True
