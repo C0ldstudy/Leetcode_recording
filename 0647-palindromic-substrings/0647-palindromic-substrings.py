@@ -1,9 +1,8 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        n = len(s)
-        dp = [[False] * n for _ in range(n)]
+        dp = [[False] * len(s) for _ in range(len(s))]
         res = 0
-        
+        n = len(s)
         for i in range(n):
             dp[i][i] = True
             res += 1
@@ -13,11 +12,10 @@ class Solution:
                 dp[i][i+1] = True
                 res += 1
         
-        for row in range(3, n+1):
-            for col in range(n-row+1):
-                if s[col] == s[col+row-1] and dp[col+1][col+row-2]:
-                    dp[col][col+row-1] = True
+        for length in range(3, n+1):
+            for i in range(n-length+1):
+                if dp[i+1][i+length-2] and (s[i] == s[i+length-1]):
+                    dp[i][i+length-1] = True
                     res += 1
         return res
-                
-        
+            
