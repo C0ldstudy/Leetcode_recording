@@ -1,8 +1,8 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
+        
         index1 = len(word1)
         index2 = len(word2)
-        
         dp = [ [False] * (len(word2)+1) for _ in range(len(word1)+1) ]        
         
         def check(word1, word2, index1, index2):
