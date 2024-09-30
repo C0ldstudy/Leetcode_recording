@@ -9,23 +9,19 @@ class Employee:
 
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
-        map_dict = {}
+        adj = {}
         for e in employees:
-            # print(e.id)
-            map_dict[e.id] = {}
-            map_dict[e.id]['neighbor'] = e.subordinates
-            map_dict[e.id]['score'] = e.importance
-            # if e[0] in map_dict.keys():
+            adj[e.id] = {}
+            adj[e.id]['imp'] = e.importance
+            adj[e.id]['sub'] = e.subordinates
         
         res = 0
-        stack = [id]
+        # print(adj[id])
+        stack = [adj[id]]
         while stack:
-            curr = stack.pop()
-            res += map_dict[curr]['score']
-            if map_dict[curr]['neighbor']:
-                for e in map_dict[curr]['neighbor']:
-                    stack.append(e)
+            node = stack.pop()
+            # print(node)
+            res += node['imp']
+            for new in node['sub']:
+                stack.append(adj[new])
         return res
-                
-            
-        
