@@ -1,20 +1,29 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-        memo = [[None for _ in range(len(word2)+1)] for _ in range(len(word1)+1)]
+        index1 = len(word1)
+        index2 = len(word2)
         
-        def recur(word1, word2, wordindex1, wordindex2):
-            if wordindex1 == 0: return wordindex2
-            if wordindex2 == 0: return wordindex1
-            if memo[wordindex1][wordindex2] is not None:
-                return memo[wordindex1][wordindex2]
-            minDistance = 0
-            if word1[wordindex1-1] == word2[wordindex2-1]:
-                minDistance = recur(word1, word2, wordindex1-1,wordindex2-1)
-            else:
-                insert = recur(word1, word2, wordindex1, wordindex2-1)
-                delete = recur(word1, word2, wordindex1-1, wordindex2)
-                replace = recur(word1, word2, wordindex1-1,wordindex2-1)
-                minDistance = min(insert, delete, replace)+1
-            memo[wordindex1][wordindex2] = minDistance
-            return minDistance
-        return recur(word1, word2, len(word1), len(word2))
+        dp = [ [False] * (len(word2)+1) for _ in range(len(word1)+1) ]        
+        
+        def check(word1, word2, index1, index2):
+            # print(res)
+            if index1 <= 0: 
+                return index2
+            elif index2 <= 0:
+                return index1
+            if dp[index1][index2] != False:
+                return dp[index1][index2]
+            res = 0
+            if word1[index1-1] != word2[index2-1]:
+                insert = check(word1, word2,index1-1, index2)
+                delete = check(word1, word2,index1, index2-1)
+                replace = check(word1, word2,index1-1, index2-1)
+                res = min(insert, delete, replace) + 1
+            else: 
+                res = check(word1, word2,index1-1, index2-1)
+            dp[index1][index2] = res
+            return res
+        # print(dp)
+        
+        return check(word1, word2, index1, index2)
+        
