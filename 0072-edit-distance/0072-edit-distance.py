@@ -6,7 +6,7 @@ class Solution:
         dp = [ [False] * (len(word2)+1) for _ in range(len(word1)+1) ]        
         
         def check(word1, word2, index1, index2):
-            # print(res)
+            # print(index1, index2)
             if index1 <= 0: 
                 return index2
             elif index2 <= 0:
@@ -22,8 +22,10 @@ class Solution:
             else: 
                 res = check(word1, word2,index1-1, index2-1)
             dp[index1][index2] = res
+            # print(res)
             return res
+        res = check(word1, word2, index1, index2)
         # print(dp)
         
-        return check(word1, word2, index1, index2)
+        return res
         
