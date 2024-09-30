@@ -7,18 +7,20 @@
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root: return []
-        map_dic = {}
-        queue = deque([(root, 0)])
+        stack = deque([(root, 0)])
         
-        while queue:
-            node, line = queue.popleft()
-            if not line in map_dic:
-                map_dic[line] = []
-            map_dic[line].append(node.val)
-            if node.left: queue.append((node.left, line-1))
-            if node.right: queue.append((node.right, line+1))
-        
-        # print(map_dic)
-        return [map_dic[i] for i in sorted(map_dic.keys())]
-        # res = 
-                
+        def bfs(stack):
+            # print(stack)
+            res = {}
+            while stack:
+                node, line = stack.popleft()
+                if line not in res.keys():
+                    res[line] = [node.val]
+                else:
+                    res[line].append(node.val)
+                if node.left: stack.append((node.left,line-1))
+                if node.right: stack.append((node.right, line+1))
+            return res
+        res = bfs(stack)
+        return [res[i] for i in sorted(res.keys())]
+            
