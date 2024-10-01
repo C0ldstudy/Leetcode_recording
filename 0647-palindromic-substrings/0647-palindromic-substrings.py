@@ -12,7 +12,7 @@ class Solution:
         n = len(s)    
         print(res)
         for length in range(3, n+1):
-            for i in range(n-length+1):
+            for i in range(n-length+1): # how many strat point if length is 3 to n+1
                 j = i + length-1
                 if (dp[i+1][j-1] == True) and (s[i] == s[j]):
                     dp[i][i+length-1] = True
