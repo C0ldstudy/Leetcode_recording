@@ -9,7 +9,10 @@ class Solution:
         if root in (None, p, q): return root
         l = self.lca(root.left, p, q)
         r = self.lca(root.right, p, q)
-        return root if l and r else l or r
+        if l and r:
+            return root
+        else:
+            return l or r
     
     
     def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
@@ -23,6 +26,7 @@ class Solution:
             dfs(node.left, h+1)
             dfs(node.right, h+1)
         dfs(root, 0)
+        print(a)
         p, q = a[-1][0], a[-1][-1]
         return self.lca(root, p, q)
     
