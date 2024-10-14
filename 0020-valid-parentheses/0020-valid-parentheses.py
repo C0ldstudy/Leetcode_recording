@@ -1,23 +1,23 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        for i in s:
-            if i in ['(', '[', '{']:
-                stack.append(i)
-            elif len(stack) == 0:
+        if len(s) == 0: return True
+        stack = deque([])
+        for c in s:
+            # print(stack)
+            if (len(stack) == 0) and (c not in ['(', '[', '{']):
                 return False
-            elif (i == ')') and (stack[-1] == '('):
-                stack.pop(-1)
-            elif (i == ']') and (stack[-1] == '['):
-                stack.pop(-1)
-            elif (i == '}') and (stack[-1] == '{'):
-                stack.pop(-1)            
+            elif len(stack) == 0 or (c in ['(', '[', '{']):
+                stack.append(c)
             else:
-                return False
-        print(stack)
-        if stack == []: return True
+                temp = stack.pop()
+                if (c == ')') and (temp !='('):
+                    return False
+                if (c == ']') and (temp !='['):
+                    return False                
+                if (c == '}') and (temp !='{'):
+                    return False 
+        
+        if len(stack) == 0: return True
         return False
-
-                
-                
-                
+                    
+        
