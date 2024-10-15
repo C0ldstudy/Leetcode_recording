@@ -1,8 +1,8 @@
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        boundary = max(candies)-extraCandies
-        res = [False] * len(candies)
-        for i, c in enumerate(candies):
-            if c >= boundary:
-                res[i] = True
-        return res
+        max_c = max(candies)
+        result = [False] * len(candies)
+        for idx in range(len(candies)):
+            if candies[idx] + extraCandies >= max_c:
+                result[idx] = True
+        return result
