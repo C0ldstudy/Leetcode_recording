@@ -14,7 +14,6 @@ class Solution:
                 else:
                     digits[i] += 1
                     break
-            # print(i)
             if i < -len(digits):
                 digits = [1] + digits
                 return digits
