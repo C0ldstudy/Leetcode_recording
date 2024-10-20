@@ -12,5 +12,7 @@ class Solution:
                 length -= 1
             else:
                 cnt += 1
+        return nums
+        
                 
-        return        
+                                
