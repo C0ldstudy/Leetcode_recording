@@ -1,11 +1,11 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        i = 0
-        while i < len(nums):
-            if nums[i] == val:
-                nums.pop(i)
+        length = len(nums)
+        cnt = 0
+        while cnt < length:
+            if nums[cnt] == val:
+                nums.pop(cnt)
+                length -=1
             else:
-                i += 1
-        # nums += [0]*count
+                cnt += 1
         return len(nums)
-            
