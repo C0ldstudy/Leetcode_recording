@@ -2,25 +2,20 @@ class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
         for c in s:
-            # print(stack)
-            if c in ['(', '[', '{']:
+            if c in ['{', '[', '(']:
                 stack.append(c)
             elif len(stack) == 0:
                 return False
+            elif c == ']' and stack[-1] == '[':
+                stack.pop(-1)
+            elif c == '}' and stack[-1] == '{':
+                stack.pop(-1)
+            elif c == ')' and stack[-1] == '(':
+                stack.pop(-1)
             else:
-                temp = stack.pop(-1)
-                if (c == ')') and (temp == '('):
-                    continue
-                elif (c == ']') and (temp == '['):
-                    continue
-                elif (c == '}') and (temp == '{'):
-                    continue                   
-                else:
-                    return False
+                return False
         if len(stack) == 0:
             return True
         else:
             return False
-    
-            
                 
