@@ -1,12 +1,12 @@
-import re
-
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        # s = 'ag ct oso gcota'
-        s = re.sub('[^a-z0-9]', '', s.lower())
-        # print(s)
-        length = len(s)//2
+        ps = ''
+        for i in s.lower():
+            if i.isalnum():
+                ps += i
+        # print(ps)
+        length = len(ps)//2
         for i in range(length):
-            if s[i] != s[-i-1]:
+            if ps[i] != ps[-i-1]:
                 return False
         return True
