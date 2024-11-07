@@ -1,11 +1,10 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         buy = math.inf
-        amount = 0
-        for idx in range(len(prices)):
-            if prices[idx] < buy:
-                buy = prices[idx]
-            elif (prices[idx] - buy) > amount:
-                amount = prices[idx] - buy
-        return amount
-                
+        max_amount = 0
+        for p in prices:
+            if p < buy:
+                buy = p
+            elif (p - buy) > max_amount:
+                max_amount = p - buy
+        return max_amount
