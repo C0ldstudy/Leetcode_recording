@@ -3,13 +3,17 @@ class Solution:
         if digits[-1] != 9:
             digits[-1] += 1
             return digits
+        
+        for i in range(len(digits)-1,-1,-1):
+            flag=0
+            if digits[i] == 9:
+                digits[i] = 0
+                flag = 1
+            else:
+                digits[i] += 1
+                break
+        if flag == 0:
+            return digits
         else:
-            cnt = -1
-            while digits[cnt] == 9:
-                digits[cnt] = 0
-                cnt -= 1
-                if (len(digits) + cnt) == -1:
-                    digits = [1] + digits
-                    return digits
-            digits[cnt] += 1
+            digits = [1] + digits
             return digits
